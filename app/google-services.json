@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918473312217",
+    "project_id": "akai-find-it",
+    "storage_bucket": "akai-find-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918473312217:android:b1c58eeeda234062ae3bc8",
+        "android_client_info": {
+          "package_name": "pl.org.akai.hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918473312217-1v2iuljs1sm546si8mbggdp90j07ucle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwiOStz6Xh2keagC9Z6QPMtqQB-u9vAlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918473312217-1v2iuljs1sm546si8mbggdp90j07ucle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
