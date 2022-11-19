@@ -3,11 +3,15 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/nav_graph"
-	app:startDestination="@id/blankFragment">
+	app:startDestination="@id/clothListFragment">
 
 	<fragment
 		android:id="@+id/blankFragment"
 		android:name="pl.org.akai.hackathon.ui.BlankFragment"
 		android:label="fragment_blank"
 		tools:layout="@layout/fragment_blank" />
+	<fragment
+		android:id="@+id/clothListFragment"
+		android:name="pl.org.akai.hackathon.ui.cloth.ClothListFragment"
+		android:label="ClothListFragment" />
 </navigation>
