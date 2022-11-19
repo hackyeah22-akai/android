@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
 		b.bottomNav.menu.forEach {
 			val icon: IIcon = when (it.itemId) {
+				R.id.addFragment -> CommunityMaterial.Icon2.cmd_hanger
+				R.id.clothListFragment -> CommunityMaterial.Icon3.cmd_wardrobe_outline
 				else -> CommunityMaterial.Icon2.cmd_help
 			}
 			it.icon = IconicsDrawable(this, icon).apply {
