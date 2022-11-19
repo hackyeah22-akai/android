@@ -1,5 +1,7 @@
 package pl.org.akai.hackathon.data.model
 
+import com.squareup.moshi.Json
+
 open class ClothBase(
 	var name: String,
 	var photo: String,
@@ -8,6 +10,7 @@ open class ClothBase(
 class ClothCreate(
 	name: String,
 	photo: String,
+	@Json(name = "category_id")
 	var categoryId: Int,
 ) : ClothBase(name, photo)
 
