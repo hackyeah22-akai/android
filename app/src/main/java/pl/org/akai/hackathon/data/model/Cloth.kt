@@ -1,14 +1,14 @@
 package pl.org.akai.hackathon.data.model
 
 open class ClothBase(
-	val name: String,
-	val photo: String,
+	var name: String,
+	var photo: String,
 )
 
 class ClothCreate(
 	name: String,
 	photo: String,
-	val categoryId: Int,
+	var categoryId: Int,
 ) : ClothBase(name, photo)
 
 class Cloth(
