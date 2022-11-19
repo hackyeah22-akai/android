@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 			val icon: IIcon = when (it.itemId) {
 				R.id.addFragment -> CommunityMaterial.Icon2.cmd_hanger
 				R.id.clothListFragment -> CommunityMaterial.Icon3.cmd_wardrobe_outline
+				R.id.dressFragment -> CommunityMaterial.Icon2.cmd_human_handsdown
 				else -> CommunityMaterial.Icon2.cmd_help
 			}
 			it.icon = IconicsDrawable(this, icon).apply {

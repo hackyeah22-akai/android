@@ -14,4 +14,18 @@ class Category(
 	name: String,
 	savings: String,
 	val id: Int,
-) : CategoryBase(name, savings)
+) : CategoryBase(name, savings) {
+
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (other !is Category) return false
+
+		if (id != other.id) return false
+
+		return true
+	}
+
+	override fun hashCode(): Int {
+		return id
+	}
+}

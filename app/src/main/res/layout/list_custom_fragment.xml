@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="vm"
+			type="pl.org.akai.hackathon.ui.base.DataViewModel" />
+	</data>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/list"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:isVisible="@{vm.isLoaded()}" />
+
+		<ProgressBar
+			android:id="@+id/progressBar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:isVisible="@{vm.isLoading()}"/>
+
+		<LinearLayout
+			android:id="@+id/errorLayout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:orientation="vertical"
+			android:isVisible="@{vm.isError()}">
+
+			<com.mikepenz.iconics.view.IconicsImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				app:iiv_color="?android:textColorPrimary"
+				app:iiv_icon="cmd-cloud-off-outline"
+				app:iiv_size="64dp" />
+
+			<Button
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:onClick="@{() -> vm.refresh()}"
+				android:text="Spróbuj ponownie" />
+		</LinearLayout>
+	</FrameLayout>
+</layout>

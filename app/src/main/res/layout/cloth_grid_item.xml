@@ -8,11 +8,9 @@
 
 		<import type="java.time.format.DateTimeFormatter" />
 
-		<import type="pl.org.akai.hackathon.ui.dress.DressModel.State" />
-
 		<variable
 			name="item"
-			type="pl.org.akai.hackathon.ui.dress.DressModel" />
+			type="pl.org.akai.hackathon.data.model.Cloth" />
 	</data>
 
 	<com.google.android.material.card.MaterialCardView
@@ -20,53 +18,49 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginHorizontal="16dp"
-		android:layout_marginTop="8dp"
-		app:cardElevation="3dp"
-		app:strokeColor="?colorPrimary"
-		app:strokeWidth="@{item.state == State.SELECTED ? 2 : 0}">
+		android:layout_marginTop="16dp"
+		app:cardElevation="3dp">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="?selectableItemBackground"
-			android:paddingHorizontal="16dp"
-			android:paddingTop="8dp"
 			android:paddingBottom="8dp">
 
 			<ImageView
 				android:id="@+id/imageView3"
-				android:layout_width="48dp"
-				android:layout_height="48dp"
-				android:layout_marginEnd="16dp"
-				android:url="@{item.cloth.photo}"
-				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:scaleType="centerCrop"
+				android:url="@{item.photo}"
+				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent"
+				tools:srcCompat="@drawable/ic_launcher" />
 
 			<TextView
 				android:id="@+id/title"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
-				android:text="@{item.cloth.name}"
+				android:layout_marginHorizontal="16dp"
+				android:layout_marginTop="16dp"
+				android:text="@{item.name}"
 				android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
 				android:textSize="18dp"
 				android:textStyle="bold"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toEndOf="@+id/imageView3"
-				app:layout_constraintTop_toTopOf="parent"
-				tools:text="Koszula biała" />
-
+				app:layout_constraintStart_toStartOf="@+id/imageView3"
+				app:layout_constraintTop_toBottomOf="@+id/imageView3"
+				tools:text="Biała koszula" />
+			<!--android:text="@{item..format(DateTimeFormatter.ISO_DATE) + &quot; {cmd-calendar}&quot;}"-->
 			<com.mikepenz.iconics.view.IconicsTextView
-				android:id="@+id/category"
-				android:layout_width="285dp"
-				android:layout_height="20dp"
-				android:layout_marginStart="16dp"
-				android:layout_marginTop="8dp"
-				android:text="@{item.cloth.category.name}"
-				app:layout_constraintStart_toEndOf="@+id/imageView3"
+				android:id="@+id/date"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintEnd_toEndOf="@+id/title"
+				app:layout_constraintStart_toStartOf="@+id/title"
 				app:layout_constraintTop_toBottomOf="@+id/title"
-				tools:text="[ ] Koszula" />
+				tools:text="2022-11-05" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</com.google.android.material.card.MaterialCardView>
 </layout>

@@ -16,4 +16,8 @@
 		android:id="@+id/clothListFragment"
 		android:name="pl.org.akai.hackathon.ui.cloth.ClothListFragment"
 		android:label="ClothListFragment" />
+	<fragment
+		android:id="@+id/dressFragment"
+		android:name="pl.org.akai.hackathon.ui.dress.DressFragment"
+		android:label="DressFragment" />
 </navigation>
