@@ -15,9 +15,17 @@
 	<fragment
 		android:id="@+id/clothListFragment"
 		android:name="pl.org.akai.hackathon.ui.cloth.ClothListFragment"
-		android:label="ClothListFragment" />
+		android:label="ClothListFragment">
+		<action
+			android:id="@+id/action_clothListFragment_to_dressFragment"
+			app:destination="@id/dressFragment" />
+	</fragment>
 	<fragment
 		android:id="@+id/dressFragment"
 		android:name="pl.org.akai.hackathon.ui.dress.DressFragment"
-		android:label="DressFragment" />
+		android:label="DressFragment">
+		<action
+			android:id="@+id/action_dressFragment_to_addFragment"
+			app:destination="@id/addFragment" />
+	</fragment>
 </navigation>
