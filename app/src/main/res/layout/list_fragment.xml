@@ -10,46 +10,81 @@
 			type="pl.org.akai.hackathon.ui.base.DataListViewModel" />
 	</data>
 
-	<FrameLayout
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/list"
+		<com.google.android.material.textfield.TextInputLayout
+			style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:id="@+id/sortLayout"
+			android:layout_marginTop="16dp"
+			android:layout_marginHorizontal="16dp"
+			app:boxCornerRadiusBottomEnd="@dimen/input_corner_radius"
+			app:boxCornerRadiusBottomStart="@dimen/input_corner_radius"
+			app:boxCornerRadiusTopEnd="@dimen/input_corner_radius"
+			app:boxCornerRadiusTopStart="@dimen/input_corner_radius"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintBottom_toTopOf="@id/frame"
+			android:hint="Sort by">
+
+			<com.google.android.material.textfield.MaterialAutoCompleteTextView
+				android:id="@+id/sort"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="none"
+				app:simpleItems="@array/sort" />
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<FrameLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:isVisible="@{vm.isLoaded()}" />
+			android:layout_height="0dp"
+			android:id="@+id/frame"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/sortLayout">
 
-		<ProgressBar
-			android:id="@+id/progressBar"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:isVisible="@{vm.isLoading()}"/>
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/list"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:isVisible="@{vm.isLoaded()}" />
 
-		<LinearLayout
-			android:id="@+id/errorLayout"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:orientation="vertical"
-			android:isVisible="@{vm.isError()}">
-
-			<com.mikepenz.iconics.view.IconicsImageView
+			<ProgressBar
+				android:id="@+id/progressBar"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
-				app:iiv_color="?android:textColorPrimary"
-				app:iiv_icon="cmd-cloud-off-outline"
-				app:iiv_size="64dp" />
+				android:layout_gravity="center"
+				android:isVisible="@{vm.isLoading()}" />
 
-			<Button
-				style="@style/Widget.Material3.Button.OutlinedButton"
+			<LinearLayout
+				android:id="@+id/errorLayout"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="24dp"
-				android:onClick="@{() -> vm.refresh()}"
-				android:text="Spróbuj ponownie" />
-		</LinearLayout>
-	</FrameLayout>
+				android:layout_gravity="center"
+				android:isVisible="@{vm.isError()}"
+				android:orientation="vertical">
+
+				<com.mikepenz.iconics.view.IconicsImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					app:iiv_color="?android:textColorPrimary"
+					app:iiv_icon="cmd-cloud-off-outline"
+					app:iiv_size="64dp" />
+
+				<Button
+					style="@style/Widget.Material3.Button.OutlinedButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:onClick="@{() -> vm.refresh()}"
+					android:text="Spróbuj ponownie" />
+			</LinearLayout>
+		</FrameLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
