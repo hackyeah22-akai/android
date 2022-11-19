@@ -15,11 +15,12 @@ class ClothListPagingSource(
 			val perPage = params.loadSize
 			val data = apiService.getClothes(page, perPage)
 			LoadResult.Page(
-				data = data.results,
-				prevKey = if (data.prevPage == null) null else page,
-				nextKey = if (data.nextPage == null) null else page + 1,
+				data = data,
+				prevKey = null,//if (data.prevPage == null) null else page,
+				nextKey = null,//if (data.nextPage == null) null else page + 1,
 			)
 		} catch (e: Exception) {
+			e.printStackTrace()
 			LoadResult.Error(e)
 		}
 	}

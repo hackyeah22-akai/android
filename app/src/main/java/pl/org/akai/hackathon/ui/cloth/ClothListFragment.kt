@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -26,7 +27,7 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 
 		b.list.adapter = vm.adapter
 //		b.list.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-		b.list.layoutManager = LinearLayoutManager(context)
+		b.list.layoutManager = GridLayoutManager(context, 2)
 
 		vm.loadData()
 	}
