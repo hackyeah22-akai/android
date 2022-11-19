@@ -35,13 +35,8 @@
 				android:name="android.app.lib_name"
 				android:value="" />
 		</activity>
-
-		<service
-			android:name=".MyFirebaseMessagingService"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="com.google.firebase.MESSAGING_EVENT" />
-			</intent-filter>
-		</service>
+		<activity
+			android:name="pl.org.akai.hackathon.ui.intro.IntroActivity"
+			android:label="AppIntro" />
 	</application>
 </manifest>

@@ -1,5 +1,6 @@
 package pl.org.akai.hackathon.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import pl.org.akai.hackathon.R
+import pl.org.akai.hackathon.data.repositories.PreferencesRepository
 import pl.org.akai.hackathon.databinding.MainActivityBinding
 import pl.org.akai.hackathon.ext.viewBinding
+import pl.org.akai.hackathon.ui.intro.IntroActivity
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), CoroutineScope {
@@ -30,10 +34,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 	private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 	private lateinit var appBarConfiguration: AppBarConfiguration
 
+	@Inject
+	lateinit var preferencesRepository: PreferencesRepository
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(b.root)
 		setSupportActionBar(b.toolbar)
+
+		if (preferencesRepository.firstLaunch) {
+			val intent = Intent(this, IntroActivity::class.java)
+			startActivity(intent)
+		}
 
 		b.toolbar.setupWithNavController(navController)
 		b.bottomNav.setupWithNavController(navController)
