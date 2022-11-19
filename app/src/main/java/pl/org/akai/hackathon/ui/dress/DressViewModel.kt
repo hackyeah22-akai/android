@@ -41,7 +41,7 @@ class DressViewModel @Inject constructor(
 
 	private fun List<DressModel>.sort() = this
 		.sortedBy { it.cloth.name }
-		.sortedBy { it.cloth.category.id }
+		.sortedBy { it.cloth.category.name }
 		.sortedBy { it.state.ordinal }
 		.filter { it.state != DressModel.State.HIDDEN }
 }

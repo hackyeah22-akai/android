@@ -15,7 +15,8 @@ class ClothListPagingSource(
 			val perPage = params.loadSize
 			val data = apiService.getClothes(page, perPage)
 			LoadResult.Page(
-				data = data,
+				data = data.sortedBy { it.name }
+					.sortedBy { it.category.name },
 				prevKey = null,//if (data.prevPage == null) null else page,
 				nextKey = null,//if (data.nextPage == null) null else page + 1,
 			)

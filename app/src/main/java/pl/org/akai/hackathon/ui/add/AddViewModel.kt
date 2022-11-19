@@ -36,6 +36,7 @@ class AddViewModel @Inject constructor(private var apiService: ApiService) : Dat
 		get() = _imageUrl
 
 	override suspend fun loadDataImpl(): List<Category> = apiService.getCategories()
+		.sortedBy { it.name }
 
 	fun add(cloth: ClothCreate) {
 		viewModelScope.launch(Dispatchers.IO) {
