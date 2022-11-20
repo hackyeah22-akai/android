@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/nav_graph"
-	app:startDestination="@id/addFragment">
+	app:startDestination="@id/clothListFragment">
 
 	<fragment
 		android:id="@+id/addFragment"
@@ -10,12 +10,12 @@
 		android:label="Add Clothes">
 		<action
 			android:id="@+id/action_addFragment_to_clothListFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/clothListFragment" />
+			app:destination="@id/clothListFragment"
+			app:launchSingleTop="true" />
 		<action
 			android:id="@+id/action_addFragment_to_dressFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/dressFragment" />
+			app:destination="@id/dressFragment"
+			app:launchSingleTop="true" />
 	</fragment>
 	<fragment
 		android:id="@+id/clothListFragment"
@@ -23,12 +23,12 @@
 		android:label="Wardrobe">
 		<action
 			android:id="@+id/action_clothListFragment_to_dressFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/dressFragment" />
+			app:destination="@id/dressFragment"
+			app:launchSingleTop="true" />
 		<action
 			android:id="@+id/action_clothListFragment_to_addFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/addFragment" />
+			app:destination="@id/addFragment"
+			app:launchSingleTop="true" />
 	</fragment>
 	<fragment
 		android:id="@+id/dressFragment"
@@ -36,11 +36,11 @@
 		android:label="Dress">
 		<action
 			android:id="@+id/action_dressFragment_to_addFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/addFragment" />
+			app:destination="@id/addFragment"
+			app:launchSingleTop="true" />
 		<action
 			android:id="@+id/action_dressFragment_to_clothListFragment"
-			app:launchSingleTop="true"
-			app:destination="@id/clothListFragment" />
+			app:destination="@id/clothListFragment"
+			app:launchSingleTop="true" />
 	</fragment>
 </navigation>
