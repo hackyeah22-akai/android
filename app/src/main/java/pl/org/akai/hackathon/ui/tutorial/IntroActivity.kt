@@ -1,4 +1,4 @@
-package pl.org.akai.hackathon.ui.intro
+package pl.org.akai.hackathon.ui.tutorial
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

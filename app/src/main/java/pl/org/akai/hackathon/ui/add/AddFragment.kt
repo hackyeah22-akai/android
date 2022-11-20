@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import pl.org.akai.hackathon.data.model.ClothCreate
 import pl.org.akai.hackathon.databinding.AddFragmentBinding
 import pl.org.akai.hackathon.ui.base.BaseFragment
+import pl.org.akai.hackathon.ui.tutorial.TooMuchActivity
 
 @AndroidEntryPoint
 class AddFragment : BaseFragment<AddFragmentBinding>(AddFragmentBinding::inflate) {
@@ -44,6 +45,13 @@ class AddFragment : BaseFragment<AddFragmentBinding>(AddFragmentBinding::inflate
 			model?.photo = b.url.text.toString()
 			if (model == null) return@setOnClickListener
 			vm.add(model)
+		}
+		vm.tooMuch.observe(viewLifecycleOwner) {
+			if (it) {
+				requireActivity().startActivity(Intent(requireActivity(),
+					TooMuchActivity::class.java))
+				vm.endToomuch()
+			}
 		}
 		vm.navigateToList.observe(viewLifecycleOwner) {
 			if (it) {

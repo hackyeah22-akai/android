@@ -35,12 +35,16 @@ class AddViewModel @Inject constructor(private var apiService: ApiService) : Dat
 	val imageUrl: LiveData<String>
 		get() = _imageUrl
 
+	private val _tooMuch = MutableLiveData(false)
+	val tooMuch: LiveData<Boolean>
+		get() = _tooMuch
+
 	override suspend fun loadDataImpl(): List<Category> = apiService.getCategories()
 		.sortedBy { it.name }
 
 	fun add(cloth: ClothCreate) {
 		viewModelScope.launch(Dispatchers.IO) {
-			apiService.addCloth(cloth)
+			_tooMuch.postValue(apiService.addCloth(cloth).tooMuch)
 			_navigateToList.postValue(true)
 		}
 	}
@@ -68,5 +72,9 @@ class AddViewModel @Inject constructor(private var apiService: ApiService) : Dat
 
 	fun endNavigating() {
 		_navigateToList.value = false
+	}
+
+	fun endToomuch() {
+		_tooMuch.value = false
 	}
 }

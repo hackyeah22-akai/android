@@ -21,7 +21,7 @@ import pl.org.akai.hackathon.R
 import pl.org.akai.hackathon.data.repositories.PreferencesRepository
 import pl.org.akai.hackathon.databinding.MainActivityBinding
 import pl.org.akai.hackathon.ext.viewBinding
-import pl.org.akai.hackathon.ui.intro.IntroActivity
+import pl.org.akai.hackathon.ui.tutorial.IntroActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint

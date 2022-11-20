@@ -36,7 +36,10 @@
 				android:value="" />
 		</activity>
 		<activity
-			android:name="pl.org.akai.hackathon.ui.intro.IntroActivity"
+			android:name="pl.org.akai.hackathon.ui.tutorial.IntroActivity"
 			android:label="AppIntro" />
+		<activity
+			android:name="pl.org.akai.hackathon.ui.tutorial.TooMuchActivity"
+			android:label="TooMuchClothes" />
 	</application>
 </manifest>

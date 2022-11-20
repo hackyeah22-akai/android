@@ -37,3 +37,13 @@ class Cloth(
 		return result
 	}
 }
+
+data class ImageUrl(
+	@Json(name = "url")
+	val imageUrl: String,
+)
+
+data class TooMuch(
+	@Json(name = "too_much") //todo
+	val tooMuch: Boolean,
+)

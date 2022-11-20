@@ -1,10 +1,7 @@
 package pl.org.akai.hackathon.data.api
 
 import okhttp3.MultipartBody
-import pl.org.akai.hackathon.data.model.Category
-import pl.org.akai.hackathon.data.model.Cloth
-import pl.org.akai.hackathon.data.model.ClothCreate
-import pl.org.akai.hackathon.data.model.ImageUrl
+import pl.org.akai.hackathon.data.model.*
 import retrofit2.http.*
 
 interface ApiService {
@@ -27,7 +24,7 @@ interface ApiService {
 	suspend fun addCloth(
 		@Body
 		cloth: ClothCreate,
-	)
+	): TooMuch
 
 	@PUT("clothes/{id}")
 	suspend fun updateCloth(
