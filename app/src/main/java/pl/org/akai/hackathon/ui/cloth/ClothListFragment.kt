@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import pl.org.akai.hackathon.databinding.ListFragmentBinding
 import pl.org.akai.hackathon.ui.base.BaseFragment
 
@@ -56,12 +60,12 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 		}
 
 		b.sort.onItemClickListener = OnItemClickListener { _, _, pos, _ ->
-			vm.query.sortBy = ClothListQuery.SortBy.values()[pos]
+			vm.query.value?.sortBy = ClothListQuery.SortBy.values()[pos]
 			vm.updateQuery()
 		}
 
 		b.unusedChip.setOnCheckedChangeListener { _, b ->
-			vm.query.unused = b
+			vm.query.value?.unused = b
 			vm.updateQuery()
 		}
 	}

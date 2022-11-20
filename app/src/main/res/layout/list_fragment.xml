@@ -18,12 +18,14 @@
 		android:layout_height="match_parent">
 
 		<com.google.android.material.card.MaterialCardView
-			android:id="@+id/materialCardView"
+			android:id="@+id/materialCardView2"
 			style="?attr/materialCardViewElevatedStyle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="16dp"
 			android:layout_marginTop="16dp"
+			android:onClick="@{() -> vm.showUnused()}"
+			android:isVisible="@{vm.unusedCount > 0}"
 			app:cardElevation="3dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +40,40 @@
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:text="You have some unused clothes!"
+					android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp"
+					android:text="@{HtmlCompat.fromHtml(&quot;We have noticed that you haven't used &lt;b>&quot; + String.valueOf(vm.unusedCount) + &quot; items&lt;/b> from your wardrobe!&lt;br>Consider using them, selling or giving away to people who might need it.&lt;br>&lt;br>Click this card to see the unused items.&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
+					android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+					tools:text="We have noticed that you haven't used 20 items from your wardrobe!\nConsider using them, selling or giving away to people who might need it.\n\nClick this card to see the unused items." />
+			</LinearLayout>
+		</com.google.android.material.card.MaterialCardView>
+
+		<com.google.android.material.card.MaterialCardView
+			android:id="@+id/materialCardView"
+			style="?attr/materialCardViewElevatedStyle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="16dp"
+			android:layout_marginTop="16dp"
+			app:cardElevation="3dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:padding="16dp">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
 					android:text="Your statistics"
 					android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
@@ -45,7 +81,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="8dp"
-					android:text="@{HtmlCompat.fromHtml(&quot;{cmd-emoticon-excited-outline} By selling your old clothes, you managed to save &lt;b>&quot; + String.valueOf(vm.amountSaved) + &quot; kg&lt;/b> of CO₂!&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
+					android:text="@{HtmlCompat.fromHtml(&quot;{cmd-emoticon-excited-outline} By selling your old clothes, you managed to save &lt;b>&quot; + String.valueOf(vm.amountSaved) + &quot; kg&lt;/b> of CO₂ so far!&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
 					android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
 					tools:text="You saved 10 kg of CO2" />
 
@@ -61,7 +97,7 @@
 
 		<com.google.android.material.textfield.TextInputLayout
 			android:id="@+id/sortLayout"
-			style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+			style="?textInputOutlinedExposedDropdownMenuStyle"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="16dp"
@@ -134,7 +170,7 @@
 					app:iiv_size="64dp" />
 
 				<Button
-					style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+					style="?materialButtonOutlinedStyle"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="24dp"

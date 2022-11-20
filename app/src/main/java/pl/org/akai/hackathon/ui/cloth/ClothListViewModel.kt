@@ -2,9 +2,12 @@ package pl.org.akai.hackathon.ui.cloth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.paging.insertFooterItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import pl.org.akai.hackathon.data.api.ApiService
 import pl.org.akai.hackathon.data.model.Cloth
@@ -16,14 +19,15 @@ import javax.inject.Inject
 class ClothListViewModel @Inject constructor(
 	private val apiService: ApiService,
 ) : DataListViewModel<Cloth, ClothGridItemBinding, ClothListViewModel>(
-	pagingSourceFactory = { ClothListPagingSource(apiService, it.query) },
+	pagingSourceFactory = { ClothListPagingSource(apiService, it.query.value ?: ClothListQuery(), it) },
 	adapterFactory = { ClothListAdapter(ClothListComparator, it) },
 ) {
 
-	var query = ClothListQuery()
+	var query = MutableLiveData(ClothListQuery())
 
 	var amountSaved = MutableLiveData(0)
 	var amountWasted = MutableLiveData(0)
+	var unusedCount = MutableLiveData(0)
 
 	private val _clothClicked = MutableLiveData<Cloth?>(null)
 	val clothClicked: LiveData<Cloth?>
@@ -51,7 +55,13 @@ class ClothListViewModel @Inject constructor(
 	}
 
 	fun updateQuery() {
+		query.postValue(query.value)
 		pagingSource?.invalidate()
+	}
+
+	fun showUnused() {
+		query.value?.unused = true
+		updateQuery()
 	}
 
 	fun sellCloth(cloth: Cloth) = viewModelScope.launch(Dispatchers.IO) {

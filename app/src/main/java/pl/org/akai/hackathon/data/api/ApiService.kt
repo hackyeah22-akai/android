@@ -14,14 +14,6 @@ interface ApiService {
 		perPage: Int,
 	): List<Cloth>
 
-	@GET("clothes/unused")
-	suspend fun getClothesUnused(
-		@Query("page")
-		page: Int,
-		@Query("per_page")
-		perPage: Int,
-	): List<Cloth>
-
 	@GET("clothes/{id}")
 	suspend fun getCloth(
 		@Path("id")

@@ -8,16 +8,15 @@ import pl.org.akai.hackathon.data.model.Cloth
 class ClothListPagingSource(
 	private val apiService: ApiService,
 	private val query: ClothListQuery,
+	private val vm: ClothListViewModel,
 ) : PagingSource<Int, Cloth>() {
 
 	override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Cloth> {
 		return try {
 			val page = params.key ?: 1
 			val perPage = params.loadSize
-			val data = if (query.unused)
-				apiService.getClothesUnused(page, perPage)
-			else
-				apiService.getClothes(page, perPage)
+			val data = apiService.getClothes(page, perPage)
+			vm.unusedCount.postValue(data.count { !it.isUsed })
 			val sortedData = when (query.sortBy) {
 				ClothListQuery.SortBy.ADDED_AT -> data.sortedByDescending { it.createdAt }
 				ClothListQuery.SortBy.USED_AT -> data.sortedByDescending { it.lastUsed }
@@ -25,12 +24,12 @@ class ClothListPagingSource(
 					.sortedBy { it.category.name }
 				ClothListQuery.SortBy.WASTE -> data.sortedByDescending { it.category.savings }
 			}
-//			val filteredData = if (query.unused)
-//				sortedData.filter { it.lastUsed == null }
-//			else
-//				sortedData
+			val filteredData = if (query.unused)
+				sortedData.filter { !it.isUsed }
+			else
+				sortedData
 			LoadResult.Page(
-				data = sortedData,
+				data = filteredData,
 				prevKey = null,//if (data.prevPage == null) null else page,
 				nextKey = null,//if (data.nextPage == null) null else page + 1,
 			)
