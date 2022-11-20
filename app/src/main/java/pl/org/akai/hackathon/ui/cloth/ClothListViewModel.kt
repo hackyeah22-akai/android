@@ -1,10 +1,11 @@
 package pl.org.akai.hackathon.ui.cloth
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pl.org.akai.hackathon.data.api.ApiService
 import pl.org.akai.hackathon.data.model.Cloth
 import pl.org.akai.hackathon.databinding.ClothGridItemBinding
-import pl.org.akai.hackathon.databinding.ClothListItemBinding
 import pl.org.akai.hackathon.ui.base.DataListViewModel
 import javax.inject.Inject
 
@@ -16,7 +17,15 @@ class ClothListViewModel @Inject constructor(
 	adapterFactory = { ClothListAdapter(ClothListComparator, it) },
 ) {
 
+	private val _clothClicked = MutableLiveData<Cloth?>(null)
+	val clothClicked: LiveData<Cloth?>
+		get() = _clothClicked
+
 	fun onItemClick(item: Cloth) {
-		//navigate(LostListFragmentDirections.actionLostListFragmentToItemFragment(item.id))
+		_clothClicked.value = item
+	}
+
+	fun endClothClicked() {
+		_clothClicked.value = null
 	}
 }
