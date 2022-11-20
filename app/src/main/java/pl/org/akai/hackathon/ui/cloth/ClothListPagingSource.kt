@@ -28,6 +28,7 @@ class ClothListPagingSource(
 				sortedData.filter { !it.isUsed }
 			else
 				sortedData
+			vm.count.postValue(filteredData.size)
 			LoadResult.Page(
 				data = filteredData,
 				prevKey = null,//if (data.prevPage == null) null else page,

@@ -39,8 +39,8 @@
 				android:layout_width="48dp"
 				android:layout_height="48dp"
 				android:layout_marginEnd="16dp"
-				android:url="@{item.cloth.photo}"
 				android:contentDescription="@string/photo_of_cloth"
+				android:url="@{item.cloth.photo}"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
@@ -61,14 +61,25 @@
 
 			<com.mikepenz.iconics.view.IconicsTextView
 				android:id="@+id/category"
-				android:layout_width="285dp"
-				android:layout_height="20dp"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
 				android:layout_marginStart="16dp"
 				android:layout_marginTop="8dp"
 				android:text="@{item.cloth.category.name}"
 				app:layout_constraintStart_toEndOf="@+id/imageView3"
 				app:layout_constraintTop_toBottomOf="@+id/title"
 				tools:text="[ ] Shirt" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:isVisible="@{item != null &amp;&amp; !item.cloth.used}"
+				android:text="Last worn a long time ago..."
+				android:textStyle="bold"
+				android:textColor="?colorPrimary"
+				app:layout_constraintBottom_toBottomOf="@+id/category"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/category" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</com.google.android.material.card.MaterialCardView>
 </layout>

@@ -42,7 +42,7 @@
 			android:layout_gravity="bottom|end"
 			android:layout_marginHorizontal="16dp"
 			android:layout_marginBottom="16dp"
-			android:isVisible="@{vm.isLoaded()}"
+			android:isVisible="@{vm.isLoaded() &amp;&amp; vm.count == 0}"
 			android:onClick="@{() -> vm.onSave()}"
 			android:text="Save" />
 
@@ -52,6 +52,16 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:isVisible="@{vm.isLoading()}" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_margin="32dp"
+			android:gravity="center_horizontal"
+			android:isVisible="@{vm.isLoaded() &amp;&amp; vm.count == 0}"
+			android:text="No data found.\nAdd some clothes first :)"
+			android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
 		<LinearLayout
 			android:id="@+id/errorLayout"

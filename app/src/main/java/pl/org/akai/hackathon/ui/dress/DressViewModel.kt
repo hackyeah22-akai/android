@@ -18,8 +18,11 @@ class DressViewModel @Inject constructor(
 
 	lateinit var originalData: List<DressModel>
 
+	val count = MutableLiveData<Int>()
+
 	override suspend fun loadDataImpl(): List<DressModel> {
 		originalData = apiService.getClothes(1, 1).map { DressModel(it) }.sort()
+		count.postValue(originalData.size)
 		return originalData
 	}
 
@@ -58,6 +61,7 @@ class DressViewModel @Inject constructor(
 
 	private fun List<DressModel>.sort() = this
 		.sortedBy { it.cloth.name }
+		.sortedBy { it.cloth.isUsed }
 		.sortedBy { it.cloth.category.name }
 //		.sortedBy { it.state.ordinal }
 		.filter { it.state != DressModel.State.HIDDEN }

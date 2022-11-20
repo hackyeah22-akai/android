@@ -28,6 +28,7 @@ class ClothListViewModel @Inject constructor(
 	var amountSaved = MutableLiveData(0)
 	var amountWasted = MutableLiveData(0)
 	var unusedCount = MutableLiveData(0)
+	var count = MutableLiveData(0)
 
 	private val _clothClicked = MutableLiveData<Cloth?>(null)
 	val clothClicked: LiveData<Cloth?>
