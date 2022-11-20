@@ -11,36 +11,22 @@
 		<action
 			android:id="@+id/action_addFragment_to_clothListFragment"
 			app:destination="@id/clothListFragment"
-			app:launchSingleTop="true" />
-		<action
-			android:id="@+id/action_addFragment_to_dressFragment"
-			app:destination="@id/dressFragment"
-			app:launchSingleTop="true" />
+			app:launchSingleTop="true"
+			app:popUpTo="@id/addFragment"
+			app:popUpToInclusive="false" />
 	</fragment>
 	<fragment
 		android:id="@+id/clothListFragment"
 		android:name="pl.org.akai.hackathon.ui.cloth.ClothListFragment"
-		android:label="Wardrobe">
-		<action
-			android:id="@+id/action_clothListFragment_to_dressFragment"
-			app:destination="@id/dressFragment"
-			app:launchSingleTop="true" />
-		<action
-			android:id="@+id/action_clothListFragment_to_addFragment"
-			app:destination="@id/addFragment"
-			app:launchSingleTop="true" />
-	</fragment>
+		android:label="Wardrobe" />
 	<fragment
 		android:id="@+id/dressFragment"
 		android:name="pl.org.akai.hackathon.ui.dress.DressFragment"
 		android:label="Dress">
 		<action
-			android:id="@+id/action_dressFragment_to_addFragment"
-			app:destination="@id/addFragment"
-			app:launchSingleTop="true" />
-		<action
 			android:id="@+id/action_dressFragment_to_clothListFragment"
 			app:destination="@id/clothListFragment"
-			app:launchSingleTop="true" />
+			app:launchSingleTop="true"
+			app:popUpTo="@id/dressFragment" />
 	</fragment>
 </navigation>

@@ -47,7 +47,7 @@ class NetworkModule {
 	@Provides
 	fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit =
 		Retrofit.Builder()
-			.baseUrl("http://dupa.com:8080/api/v1/")
+			.baseUrl("https://wardrobbers.herokuapp.com/api/v1/")
 			.client(okHttpClient)
 			.addConverterFactory(MoshiConverterFactory.create(moshi))
 			.build()
