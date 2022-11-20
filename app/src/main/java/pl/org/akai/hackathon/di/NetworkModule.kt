@@ -12,6 +12,7 @@ import pl.org.akai.hackathon.data.DataAdapters
 import pl.org.akai.hackathon.data.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -32,8 +33,11 @@ class NetworkModule {
 		OkHttpClient.Builder()
 			.addInterceptor {
 				val prefs = context.getSharedPreferences("user", Context.MODE_PRIVATE)
-				val token = prefs.getString("token", null)
-				if (token != null) {
+				var token = prefs.getString("token", null)
+				if (token == null) {
+					token = UUID.randomUUID().toString()
+					prefs.edit().putString("token", token).apply()
+				} else {
 					return@addInterceptor it.proceed(it.request()
 						.newBuilder()
 						.addHeader("Authorization", "Bearer $token")

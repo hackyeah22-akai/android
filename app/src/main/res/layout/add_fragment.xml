@@ -94,6 +94,45 @@
 
 		</com.google.android.material.textfield.TextInputLayout>
 
+		<LinearLayout
+			android:id="@+id/checkboxLayout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			android:gravity="center"
+			app:layout_constraintTop_toBottomOf="@+id/categoryLayout"
+			android:orientation="horizontal">
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="false"
+				android:padding="10dp"
+				android:text="@string/spring" />
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="false"
+				android:padding="10dp"
+				android:text="@string/summer" />
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="false"
+				android:padding="10dp"
+				android:text="@string/fall" />
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="false"
+				android:padding="10dp"
+				android:text="@string/winter" />
+		</LinearLayout>
+
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/button"
 			android:layout_width="wrap_content"
@@ -102,7 +141,7 @@
 			android:enabled="false"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/categoryLayout"
+			app:layout_constraintTop_toBottomOf="@+id/checkboxLayout"
 			android:text="@string/add_cloth" />
 
 		<TextView
