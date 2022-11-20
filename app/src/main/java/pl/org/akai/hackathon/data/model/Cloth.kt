@@ -1,6 +1,7 @@
 package pl.org.akai.hackathon.data.model
 
 import com.squareup.moshi.Json
+import java.time.LocalDate
 
 open class ClothBase(
 	var name: String,
@@ -19,6 +20,8 @@ class Cloth(
 	photo: String,
 	val id: Int,
 	val category: Category,
+	@Json(name = "last_used")
+	val lastUsed: LocalDate,
 ) : ClothBase(name, photo) {
 
 	override fun equals(other: Any?): Boolean {
