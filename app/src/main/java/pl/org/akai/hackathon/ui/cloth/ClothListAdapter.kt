@@ -5,7 +5,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import pl.org.akai.hackathon.data.model.Cloth
 import pl.org.akai.hackathon.databinding.ClothGridItemBinding
-import pl.org.akai.hackathon.databinding.ClothListItemBinding
 import pl.org.akai.hackathon.ext.onClick
 import pl.org.akai.hackathon.ui.base.BindingViewHolder
 

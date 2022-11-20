@@ -29,7 +29,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="4dp"
 				android:minHeight="0dp"
-				android:text="Retry" />
+				android:text="@string/retry" />
 		</LinearLayout>
 
 		<ProgressBar

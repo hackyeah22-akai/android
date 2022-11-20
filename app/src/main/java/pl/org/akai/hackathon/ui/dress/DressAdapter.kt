@@ -32,5 +32,5 @@ class DressAdapter(
 		}
 	}
 
-	override fun getItemCount() = items.count { it.state != DressModel.State.HIDDEN } ?: 0
+	override fun getItemCount() = items.count { it.state != DressModel.State.HIDDEN }
 }

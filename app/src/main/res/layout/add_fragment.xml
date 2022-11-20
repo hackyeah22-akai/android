@@ -25,7 +25,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="20dp"
-			android:text="Dodaj Ubranie"
+			android:text="@string/add_cloth"
 			android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
 			android:textColor="?attr/colorPrimary"
 			app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="16dp"
 			android:layout_marginTop="32dp"
-			android:hint="Nazwa ubrania"
+			android:hint="@string/name_of_cloth"
 			app:boxCornerRadiusBottomEnd="@dimen/input_corner_radius"
 			app:boxCornerRadiusBottomStart="@dimen/input_corner_radius"
 			app:boxCornerRadiusTopEnd="@dimen/input_corner_radius"
@@ -83,7 +83,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/name"
-			android:hint="Kategoria">
+			android:hint="@string/category">
 
 			<com.google.android.material.textfield.MaterialAutoCompleteTextView
 				android:id="@+id/category"
@@ -103,7 +103,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/categoryLayout"
-			android:text="Add Cloth" />
+			android:text="@string/add_cloth" />
 
 		<TextView
 			android:id="@+id/url"

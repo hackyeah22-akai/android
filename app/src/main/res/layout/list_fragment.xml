@@ -29,7 +29,7 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toTopOf="@id/unused_chip"
-			android:hint="Sort by">
+			android:hint="@string/sort_by">
 
 			<com.google.android.material.textfield.MaterialAutoCompleteTextView
 				android:id="@+id/sort"
@@ -49,7 +49,7 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toTopOf="@id/frame"
-			android:text="Unused" />
+			android:text="@string/unused" />
 
 		<FrameLayout
 			android:layout_width="match_parent"
@@ -93,7 +93,7 @@
 					android:layout_height="wrap_content"
 					android:layout_marginTop="24dp"
 					android:onClick="@{() -> vm.refresh()}"
-					android:text="Spróbuj ponownie" />
+					android:text="@string/try_again" />
 			</LinearLayout>
 		</FrameLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,13 +31,13 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 				MaterialAlertDialogBuilder(requireContext())
 					.setTitle(it.name)
 					.setMessage(it.category.name)
-					.setNeutralButton("Anuluj") { dialog, which ->
+					.setNeutralButton("Cancel") { dialog, which ->
 						// Respond to neutral button press
 					}
-					.setNegativeButton("Wyrzuciłem") { dialog, which ->
+					.setNegativeButton("Thrown") { dialog, which ->
 						// Respond to negative button press
 					}
-					.setPositiveButton("Oddałem/Sprzedałem") { dialog, which ->
+					.setPositiveButton("Given/sold") { dialog, which ->
 						// Respond to positive button press
 					}
 					.show()

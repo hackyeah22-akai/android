@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
 		android:id="@+id/addFragment"
-		android:title="Add" />
+		android:title="@string/add" />
 	<item
 		android:id="@+id/clothListFragment"
-		android:title="List" />
+		android:title="@string/list" />
 	<item
 		android:id="@+id/dressFragment"
-		android:title="Dress" />
+		android:title="@string/dress" />
 </menu>

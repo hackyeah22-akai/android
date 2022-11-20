@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddViewModel @Inject constructor(private var apiService: ApiService) : DataViewModel<List<Category>>(
-	listOf(Category("Ładowanie kategorii...", "Ładowanie", 0))
+	listOf(Category("Loading categories...", "Loading", 0))
 ) {
 	val list: LiveData<Array<String>> = Transformations.map(data) { categories ->
 		categories.map { it.name }.toTypedArray()

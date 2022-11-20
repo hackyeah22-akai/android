@@ -1,5 +1,17 @@
 <resources>
 	<string name="app_name">WardRobbers</string>
+	<string name="photo_of_cloth">Photo of cloth</string>
+	<string name="add_cloth">Add cloth</string>
+	<string name="name_of_cloth">Name of cloth</string>
+	<string name="category">Category</string>
+	<string name="try_again">Try again</string>
+	<string name="sort_by">Sort by</string>
+	<string name="unused">Unused</string>
+	<string name="retry">Retry</string>
+	<string name="add">Add</string>
+	<string name="list">List</string>
+	<string name="dress">Dress</string>
+	<string name="filter">Filter</string>
 
 	<string-array name="sort">
 		<item>Added time</item>
