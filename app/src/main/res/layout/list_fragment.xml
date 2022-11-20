@@ -28,7 +28,7 @@
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintBottom_toTopOf="@id/frame"
+			app:layout_constraintBottom_toTopOf="@id/unused_chip"
 			android:hint="Sort by">
 
 			<com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -40,12 +40,23 @@
 
 		</com.google.android.material.textfield.TextInputLayout>
 
+		<com.google.android.material.chip.Chip
+			android:id="@+id/unused_chip"
+			style="@style/Widget.Material3.Chip.Filter"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@id/sortLayout"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintBottom_toTopOf="@id/frame"
+			android:text="Unused" />
+
 		<FrameLayout
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:id="@+id/frame"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/sortLayout">
+			app:layout_constraintTop_toBottomOf="@+id/unused_chip">
 
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/list"
