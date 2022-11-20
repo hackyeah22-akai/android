@@ -31,7 +31,7 @@ jobs:
         uses: sparkfabrik/android-build-action@v1.0.0
         with:
           project-path: .
-          output-path: wardrobbers-${{ steps.release.outputs.tag }}.apk
+          output-path: wardrobber-${{ steps.release.outputs.tag }}.apk
           build-type: assemble
       - name: Sign build artifacts
         id: sign_app

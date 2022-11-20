@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">WardRobbers</string>
+	<string name="app_name">WardRobber</string>
 	<string name="photo_of_cloth">Photo of cloth</string>
 	<string name="add_cloth">Add cloth</string>
 	<string name="name_of_cloth">Name of cloth</string>
