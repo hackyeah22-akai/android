@@ -2,6 +2,9 @@ package pl.org.akai.hackathon.ui.cloth
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -43,6 +46,16 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 					.show()
 				vm.endClothClicked()
 			}
+		}
+
+		b.sort.onItemClickListener = OnItemClickListener { _, _, pos, _ ->
+			vm.query.sortBy = ClothListQuery.SortBy.values()[pos]
+			vm.updateQuery()
+		}
+
+		b.unusedChip.setOnCheckedChangeListener { _, b ->
+			vm.query.unused = b
+			vm.updateQuery()
 		}
 	}
 }

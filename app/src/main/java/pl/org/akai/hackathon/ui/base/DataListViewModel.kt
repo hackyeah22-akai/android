@@ -13,7 +13,7 @@ abstract class DataListViewModel<
 	B : ViewBinding,
 	D : DataListViewModel<T, B, D>,
 >(
-	private val pagingSourceFactory: () -> PagingSource<Int, T>,
+	private val pagingSourceFactory: (vm: D) -> PagingSource<Int, T>,
 	private val adapterFactory: (vm: D) -> PagingDataAdapter<T, BindingViewHolder<B>>,
 ) : BaseViewModel() {
 
@@ -22,11 +22,11 @@ abstract class DataListViewModel<
 	val isLoaded = MutableLiveData(false)
 	val error = MutableLiveData<Throwable>(null)
 
-	private var pagingSource: PagingSource<Int, T>? = null
+	protected var pagingSource: PagingSource<Int, T>? = null
 	val flow = Pager(
 		PagingConfig(pageSize = 10, initialLoadSize = 20),
 	) {
-		pagingSource = pagingSourceFactory()
+		pagingSource = pagingSourceFactory(this as D)
 		pagingSource!!
 	}.flow.cachedIn(viewModelScope)
 

@@ -7,7 +7,7 @@
 
 		<variable
 			name="vm"
-			type="pl.org.akai.hackathon.ui.base.DataListViewModel" />
+			type="pl.org.akai.hackathon.ui.cloth.ClothListViewModel" />
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -15,21 +15,21 @@
 		android:layout_height="match_parent">
 
 		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/sortLayout"
 			style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:id="@+id/sortLayout"
-			android:layout_marginTop="16dp"
 			android:layout_marginHorizontal="16dp"
+			android:layout_marginTop="16dp"
+			android:hint="@string/sort_by"
 			app:boxCornerRadiusBottomEnd="@dimen/input_corner_radius"
 			app:boxCornerRadiusBottomStart="@dimen/input_corner_radius"
 			app:boxCornerRadiusTopEnd="@dimen/input_corner_radius"
 			app:boxCornerRadiusTopStart="@dimen/input_corner_radius"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toTopOf="@id/unused_chip"
-			android:hint="@string/sort_by">
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
 
 			<com.google.android.material.textfield.MaterialAutoCompleteTextView
 				android:id="@+id/sort"
@@ -45,16 +45,17 @@
 			style="@style/Widget.Material3.Chip.Filter"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			app:layout_constraintTop_toBottomOf="@id/sortLayout"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
+			android:checked="@{vm.query.unused}"
+			android:text="@string/unused"
 			app:layout_constraintBottom_toTopOf="@id/frame"
-			android:text="@string/unused" />
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/sortLayout" />
 
 		<FrameLayout
+			android:id="@+id/frame"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
-			android:id="@+id/frame"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/unused_chip">
 

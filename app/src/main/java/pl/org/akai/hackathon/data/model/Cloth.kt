@@ -20,6 +20,8 @@ class Cloth(
 	photo: String,
 	val id: Int,
 	val category: Category,
+	@Json(name = "created_at")
+	val createdAt: LocalDate,
 	@Json(name = "last_used")
 	val lastUsed: LocalDate?,
 ) : ClothBase(name, photo) {

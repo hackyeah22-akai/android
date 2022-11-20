@@ -13,9 +13,11 @@ import javax.inject.Inject
 class ClothListViewModel @Inject constructor(
 	private val apiService: ApiService,
 ) : DataListViewModel<Cloth, ClothGridItemBinding, ClothListViewModel>(
-	pagingSourceFactory = { ClothListPagingSource(apiService) },
+	pagingSourceFactory = { ClothListPagingSource(apiService, it.query) },
 	adapterFactory = { ClothListAdapter(ClothListComparator, it) },
 ) {
+
+	var query = ClothListQuery()
 
 	private val _clothClicked = MutableLiveData<Cloth?>(null)
 	val clothClicked: LiveData<Cloth?>
@@ -27,5 +29,9 @@ class ClothListViewModel @Inject constructor(
 
 	fun endClothClicked() {
 		_clothClicked.value = null
+	}
+
+	fun updateQuery() {
+		pagingSource?.invalidate()
 	}
 }
