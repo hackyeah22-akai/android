@@ -41,10 +41,12 @@ abstract class DataListViewModel<
 		isLoading.postValue(true)
 		isError.postValue(false)
 		isLoaded.postValue(false)
+		var loaded = false
 		viewModelScope.launch {
 			adapterBase.loadStateFlow.collectLatest { loadStates ->
-				if (isLoaded.value == true)
+				if (loaded)
 					return@collectLatest
+				loaded = loadStates.refresh is LoadState.NotLoading
 				isLoading.postValue(loadStates.refresh is LoadState.Loading)
 				isError.postValue(loadStates.refresh is LoadState.Error)
 				isLoaded.postValue(loadStates.refresh is LoadState.NotLoading)
