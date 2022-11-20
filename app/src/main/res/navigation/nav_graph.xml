@@ -7,7 +7,7 @@
 	<fragment
 		android:id="@+id/addFragment"
 		android:name="pl.org.akai.hackathon.ui.add.AddFragment"
-		android:label="AddFragment">
+		android:label="Add Clothes">
 		<action
 			android:id="@+id/action_addFragment_to_clothListFragment"
 			app:launchSingleTop="true"
@@ -16,7 +16,7 @@
 	<fragment
 		android:id="@+id/clothListFragment"
 		android:name="pl.org.akai.hackathon.ui.cloth.ClothListFragment"
-		android:label="ClothListFragment">
+		android:label="Wardrobe">
 		<action
 			android:id="@+id/action_clothListFragment_to_dressFragment"
 			app:launchSingleTop="true"
@@ -25,7 +25,7 @@
 	<fragment
 		android:id="@+id/dressFragment"
 		android:name="pl.org.akai.hackathon.ui.dress.DressFragment"
-		android:label="DressFragment">
+		android:label="Dress">
 		<action
 			android:id="@+id/action_dressFragment_to_addFragment"
 			app:launchSingleTop="true"
