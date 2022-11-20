@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import pl.org.akai.hackathon.App
 import pl.org.akai.hackathon.data.DataAdapters
 import pl.org.akai.hackathon.data.api.ApiService
 import retrofit2.Retrofit
@@ -32,18 +33,11 @@ class NetworkModule {
 	fun provideOkHttpClient(context: Context): OkHttpClient =
 		OkHttpClient.Builder()
 			.addInterceptor {
-				val prefs = context.getSharedPreferences("user", Context.MODE_PRIVATE)
-				var token = prefs.getString("token", null)
-				if (token == null) {
-					token = UUID.randomUUID().toString()
-					prefs.edit().putString("token", token).apply()
-				} else {
-					return@addInterceptor it.proceed(it.request()
-						.newBuilder()
-						.addHeader("Authorization", "Bearer $token")
-						.build())
-				}
-				it.proceed(it.request())
+				val token = (context.applicationContext as App).deviceId
+				return@addInterceptor it.proceed(it.request()
+					.newBuilder()
+					.addHeader("Bearer", "Bearer $token")
+					.build())
 			}
 			.build()
 
