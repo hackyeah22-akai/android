@@ -39,7 +39,7 @@ class IntroActivity : AppIntro() {
 		))
 		addSlide(AppIntroFragment.createInstance(
 			title = "We are here to reduce that waste!",
-			description = "Add all your clothes using our app and help the environment! See your corbon footprint statistics. Monitor your clothes usage and be aware of what you use and don't.",
+			description = "Add all your clothes using our app and help the environment! See your carbon footprint statistics. Monitor your clothes usage and be aware of what you use and don't.",
 			imageDrawable = R.drawable.like,
 			backgroundColorRes = R.color.md_theme_dark_primary,
 			titleColorRes = R.color.md_theme_dark_onPrimary,
