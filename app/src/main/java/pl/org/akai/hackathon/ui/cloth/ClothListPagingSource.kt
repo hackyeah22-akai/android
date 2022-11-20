@@ -14,7 +14,10 @@ class ClothListPagingSource(
 		return try {
 			val page = params.key ?: 1
 			val perPage = params.loadSize
-			val data = apiService.getClothes(page, perPage)
+			val data = if (query.unused)
+				apiService.getClothesUnused(page, perPage)
+			else
+				apiService.getClothes(page, perPage)
 			val sortedData = when (query.sortBy) {
 				ClothListQuery.SortBy.ADDED_AT -> data.sortedByDescending { it.createdAt }
 				ClothListQuery.SortBy.USED_AT -> data.sortedByDescending { it.lastUsed }
@@ -22,12 +25,12 @@ class ClothListPagingSource(
 					.sortedBy { it.category.name }
 				ClothListQuery.SortBy.WASTE -> data.sortedByDescending { it.category.savings }
 			}
-			val filteredData = if (query.unused)
-				sortedData.filter { it.lastUsed == null }
-			else
-				sortedData
+//			val filteredData = if (query.unused)
+//				sortedData.filter { it.lastUsed == null }
+//			else
+//				sortedData
 			LoadResult.Page(
-				data = filteredData,
+				data = sortedData,
 				prevKey = null,//if (data.prevPage == null) null else page,
 				nextKey = null,//if (data.nextPage == null) null else page + 1,
 			)
