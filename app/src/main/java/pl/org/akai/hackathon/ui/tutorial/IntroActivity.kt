@@ -23,15 +23,27 @@ class IntroActivity : AppIntro() {
 		))
 		addSlide(AppIntroFragment.createInstance(
 			title = "Welcome...",
-			description = "This is the first slide of the example",
-			imageDrawable = R.drawable.profile,
+			description = "How much did you pay for the clothes in your closet? If you have the receipts, you can calculate this. However, there is a cost behind each dress, pair of jeans, shirt, and sock that goes unnoticed by most people: the cost to the environment.",
+			imageDrawable = R.drawable.wardrobe,
 			backgroundColorRes = R.color.md_theme_dark_primary,
+			titleColorRes = R.color.md_theme_dark_onPrimary,
+			descriptionColorRes = R.color.md_theme_dark_onPrimary
 		))
 		addSlide(AppIntroFragment.createInstance(
-			title = "...Let's get started!",
-			description = "This is the last slide, I won't annoy you more :)",
-			imageDrawable = R.drawable.profile,
+			title = "How are jeans made?",
+			description = "According to figures from the United Nations Environment Programme (UNEP), it takes 3,781 liters of water to make a pair of jeans, from the production of the cotton to the delivery of the final product to the store. That equates to the emission of around 33.4 kilograms of carbon equivalent.",
+			imageDrawable = R.drawable.jeans,
 			backgroundColorRes = R.color.md_theme_light_primary,
+			titleColorRes = R.color.md_theme_light_onPrimary,
+			descriptionColorRes = R.color.md_theme_light_onPrimary
+		))
+		addSlide(AppIntroFragment.createInstance(
+			title = "We are here to reduce that waste!",
+			description = "Add all your clothes using our app and help the environment! See your corbon footprint statistics. Monitor your clothes usage and be aware of what you use and don't.",
+			imageDrawable = R.drawable.like,
+			backgroundColorRes = R.color.md_theme_dark_primary,
+			titleColorRes = R.color.md_theme_dark_onPrimary,
+			descriptionColorRes = R.color.md_theme_dark_onPrimary
 		))
 	}
 
