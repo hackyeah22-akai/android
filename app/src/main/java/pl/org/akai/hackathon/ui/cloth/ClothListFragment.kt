@@ -38,10 +38,10 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 						// Respond to neutral button press
 					}
 					.setNegativeButton("Thrown") { dialog, which ->
-						// Respond to negative button press
+						vm.throwCloth(it)
 					}
 					.setPositiveButton("Given/sold") { dialog, which ->
-						// Respond to positive button press
+						vm.sellCloth(it)
 					}
 					.show()
 				vm.endClothClicked()

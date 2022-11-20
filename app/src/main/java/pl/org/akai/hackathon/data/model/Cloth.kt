@@ -24,6 +24,7 @@ class Cloth(
 	val createdAt: LocalDate,
 	@Json(name = "last_used")
 	val lastUsed: LocalDate?,
+	val status: String,
 ) : ClothBase(name, photo) {
 
 	override fun equals(other: Any?): Boolean {

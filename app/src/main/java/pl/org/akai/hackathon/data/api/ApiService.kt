@@ -38,6 +38,21 @@ interface ApiService {
 		id: Int,
 	)
 
+	@DELETE("clothes/sell/{id}")
+	suspend fun sellCloth(
+		@Path("id")
+		id: Int,
+	)
+
+	@DELETE("clothes/throw/{id}")
+	suspend fun throwCloth(
+		@Path("id")
+		id: Int,
+	)
+
+	@GET("clothes/unavailable")
+	suspend fun getUnavailableClothes(): List<Cloth>
+
 	@Multipart
 	@POST("clothes/images")
 	suspend fun uploadImage(

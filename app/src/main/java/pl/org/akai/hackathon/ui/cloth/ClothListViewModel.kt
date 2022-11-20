@@ -2,7 +2,10 @@ package pl.org.akai.hackathon.ui.cloth
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pl.org.akai.hackathon.data.api.ApiService
 import pl.org.akai.hackathon.data.model.Cloth
 import pl.org.akai.hackathon.databinding.ClothGridItemBinding
@@ -19,6 +22,9 @@ class ClothListViewModel @Inject constructor(
 
 	var query = ClothListQuery()
 
+	var amountSaved = MutableLiveData(0)
+	var amountWasted = MutableLiveData(0)
+
 	private val _clothClicked = MutableLiveData<Cloth?>(null)
 	val clothClicked: LiveData<Cloth?>
 		get() = _clothClicked
@@ -31,7 +37,32 @@ class ClothListViewModel @Inject constructor(
 		_clothClicked.value = null
 	}
 
+	override fun loadData() {
+		super.loadData()
+		viewModelScope.launch(Dispatchers.IO) {
+			reloadStats()
+		}
+	}
+
+	private suspend fun reloadStats() {
+		val list = apiService.getUnavailableClothes()
+		amountSaved.postValue(list.filter { it.status == "sold" }.sumOf { it.category.savings })
+		amountWasted.postValue(list.filter { it.status == "thrown" }.sumOf { it.category.savings })
+	}
+
 	fun updateQuery() {
 		pagingSource?.invalidate()
+	}
+
+	fun sellCloth(cloth: Cloth) = viewModelScope.launch(Dispatchers.IO) {
+		apiService.sellCloth(cloth.id)
+		pagingSource?.invalidate()
+		reloadStats()
+	}
+
+	fun throwCloth(cloth: Cloth) = viewModelScope.launch(Dispatchers.IO) {
+		apiService.throwCloth(cloth.id)
+		pagingSource?.invalidate()
+		reloadStats()
 	}
 }

@@ -37,7 +37,7 @@ abstract class DataListViewModel<
 			footer = ListLoadStateAdapter(adapterBase::retry),
 		)
 
-	fun loadData() {
+	open fun loadData() {
 		isLoading.postValue(true)
 		isError.postValue(false)
 		isLoaded.postValue(false)
