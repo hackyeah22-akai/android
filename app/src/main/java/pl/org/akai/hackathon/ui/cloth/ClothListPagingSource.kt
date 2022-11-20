@@ -20,6 +20,7 @@ class ClothListPagingSource(
 				ClothListQuery.SortBy.USED_AT -> data.sortedByDescending { it.lastUsed }
 				ClothListQuery.SortBy.NAME -> data.sortedBy { it.name }
 					.sortedBy { it.category.name }
+				ClothListQuery.SortBy.WASTE -> data.sortedByDescending { it.category.savings }
 			}
 			val filteredData = if (query.unused)
 				sortedData.filter { it.lastUsed == null }

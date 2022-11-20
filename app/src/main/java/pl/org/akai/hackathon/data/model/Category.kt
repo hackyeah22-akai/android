@@ -2,17 +2,17 @@ package pl.org.akai.hackathon.data.model
 
 open class CategoryBase(
 	val name: String,
-	val savings: String,
+	val savings: Int,
 )
 
 class CategoryCreate(
 	name: String,
-	savings: String,
+	savings: Int,
 ) : CategoryBase(name, savings)
 
 class Category(
 	name: String,
-	savings: String,
+	savings: Int,
 	val id: Int,
 ) : CategoryBase(name, savings) {
 

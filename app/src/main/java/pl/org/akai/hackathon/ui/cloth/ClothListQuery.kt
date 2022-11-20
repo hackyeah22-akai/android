@@ -9,5 +9,6 @@ data class ClothListQuery(
 		ADDED_AT,
 		USED_AT,
 		NAME,
+		WASTE,
 	}
 }
