@@ -1,8 +1,12 @@
 package pl.org.akai.hackathon.ui.dress
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.hadilq.liveevent.LiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import pl.org.akai.hackathon.data.api.ApiService
 import pl.org.akai.hackathon.ui.base.DataViewModel
 import javax.inject.Inject
@@ -22,7 +26,9 @@ class DressViewModel @Inject constructor(
 	fun onClothSelected(item: DressModel) {
 		val items = originalData
 		// hide all items in this category
-		items.onEach { if (it.cloth.category == item.cloth.category) it.state = DressModel.State.HIDDEN }
+		items.onEach {
+			if (it.cloth.category == item.cloth.category) it.state = DressModel.State.HIDDEN
+		}
 		// ..except the selected item
 		item.state = DressModel.State.SELECTED
 		postList(items)
@@ -31,8 +37,19 @@ class DressViewModel @Inject constructor(
 	fun onClothUnselected(item: DressModel) {
 		val items = originalData
 		// show all items in this category
-		items.onEach { if (it.cloth.category == item.cloth.category) it.state = DressModel.State.UNSELECTED }
+		items.onEach {
+			if (it.cloth.category == item.cloth.category) it.state = DressModel.State.UNSELECTED
+		}
 		postList(items)
+	}
+
+	fun onSave() = viewModelScope.launch(Dispatchers.IO) {
+		data.value?.forEach {
+			if (it.state != DressModel.State.SELECTED)
+				return@forEach
+			apiService.useCloth(it.cloth.id)
+		}
+		navigate(DressFragmentDirections.actionDressFragmentToClothListFragment())
 	}
 
 	private fun postList(items: List<DressModel>) {
@@ -42,6 +59,6 @@ class DressViewModel @Inject constructor(
 	private fun List<DressModel>.sort() = this
 		.sortedBy { it.cloth.name }
 		.sortedBy { it.cloth.category.name }
-		.sortedBy { it.state.ordinal }
+//		.sortedBy { it.state.ordinal }
 		.filter { it.state != DressModel.State.HIDDEN }
 }

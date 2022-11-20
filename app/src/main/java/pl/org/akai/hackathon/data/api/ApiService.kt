@@ -32,6 +32,12 @@ interface ApiService {
 		id: Int,
 	): Cloth
 
+	@POST("clothes/use/{id}")
+	suspend fun useCloth(
+		@Path("id")
+		id: Int,
+	)
+
 	@Multipart
 	@POST("clothes/images")
 	suspend fun uploadImage(

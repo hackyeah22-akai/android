@@ -12,6 +12,10 @@
 			android:id="@+id/action_addFragment_to_clothListFragment"
 			app:launchSingleTop="true"
 			app:destination="@id/clothListFragment" />
+		<action
+			android:id="@+id/action_addFragment_to_dressFragment"
+			app:launchSingleTop="true"
+			app:destination="@id/dressFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/clothListFragment"
@@ -21,6 +25,10 @@
 			android:id="@+id/action_clothListFragment_to_dressFragment"
 			app:launchSingleTop="true"
 			app:destination="@id/dressFragment" />
+		<action
+			android:id="@+id/action_clothListFragment_to_addFragment"
+			app:launchSingleTop="true"
+			app:destination="@id/addFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/dressFragment"
@@ -30,5 +38,9 @@
 			android:id="@+id/action_dressFragment_to_addFragment"
 			app:launchSingleTop="true"
 			app:destination="@id/addFragment" />
+		<action
+			android:id="@+id/action_dressFragment_to_clothListFragment"
+			app:launchSingleTop="true"
+			app:destination="@id/clothListFragment" />
 	</fragment>
 </navigation>

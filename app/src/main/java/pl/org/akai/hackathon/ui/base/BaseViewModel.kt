@@ -9,6 +9,6 @@ abstract class BaseViewModel : ViewModel() {
 	val navCommand = LiveEvent<NavDirections>()
 
 	protected fun navigate(navDirections: NavDirections) {
-		navCommand.value = navDirections
+		navCommand.postValue(navDirections)
 	}
 }

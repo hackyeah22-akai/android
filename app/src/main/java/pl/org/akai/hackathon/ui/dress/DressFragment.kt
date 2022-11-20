@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import pl.org.akai.hackathon.databinding.ListCustomFragmentBinding
+import pl.org.akai.hackathon.databinding.DressFragmentBinding
 import pl.org.akai.hackathon.ui.base.BaseFragment
 
 @AndroidEntryPoint
-class DressFragment : BaseFragment<ListCustomFragmentBinding>(ListCustomFragmentBinding::inflate) {
+class DressFragment : BaseFragment<DressFragmentBinding>(DressFragmentBinding::inflate) {
 
 	override val vm: DressViewModel by viewModels()
 
