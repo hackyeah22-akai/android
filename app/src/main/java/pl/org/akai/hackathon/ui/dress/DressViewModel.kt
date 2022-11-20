@@ -19,6 +19,7 @@ class DressViewModel @Inject constructor(
 	lateinit var originalData: List<DressModel>
 
 	val count = MutableLiveData<Int>()
+	val selectedCount = MutableLiveData<Int>()
 
 	override suspend fun loadDataImpl(): List<DressModel> {
 		originalData = apiService.getClothes(1, 1).map { DressModel(it) }.sort()
@@ -56,6 +57,7 @@ class DressViewModel @Inject constructor(
 	}
 
 	private fun postList(items: List<DressModel>) {
+		selectedCount.postValue(items.count { it.state == DressModel.State.SELECTED })
 		data.postValue(items.sort())
 	}
 
