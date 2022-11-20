@@ -41,19 +41,19 @@
 					android:text="Your statistics"
 					android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
-				<TextView
+				<com.mikepenz.iconics.view.IconicsTextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="8dp"
-					android:text="@{HtmlCompat.fromHtml(&quot;By selling your old clothes, you managed to save &lt;b>&quot; + String.valueOf(vm.amountSaved) + &quot; kg&lt;/b> of CO₂!&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
+					android:text="@{HtmlCompat.fromHtml(&quot;{cmd-emoticon-excited-outline} By selling your old clothes, you managed to save &lt;b>&quot; + String.valueOf(vm.amountSaved) + &quot; kg&lt;/b> of CO₂!&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
 					android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
 					tools:text="You saved 10 kg of CO2" />
 
-				<TextView
+				<com.mikepenz.iconics.view.IconicsTextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="8dp"
-					android:text="@{HtmlCompat.fromHtml(&quot;The amount of clothes thrown out calculates to about &lt;b>&quot; + String.valueOf(vm.amountWasted) + &quot; kg&lt;/b> of CO₂.&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
+					android:text="@{HtmlCompat.fromHtml(&quot;{cmd-emoticon-dead-outline} The amount of clothes thrown out calculates to about &lt;b>&quot; + String.valueOf(vm.amountWasted) + &quot; kg&lt;/b> of CO₂.&quot;, HtmlCompat.FROM_HTML_MODE_COMPACT)}"
 					android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
 					tools:text="You wasted 10 kg of CO2" />
 			</LinearLayout>

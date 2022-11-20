@@ -38,7 +38,7 @@ class ClothListFragment : BaseFragment<ListFragmentBinding>(ListFragmentBinding:
 					}
 				MaterialAlertDialogBuilder(requireContext())
 					.setTitle(it.name)
-					.setMessage(it.category.name)
+					.setMessage("Are you sure you want to remove this item?")
 					.setNeutralButton("Cancel") { dialog, which ->
 						// Respond to neutral button press
 					}
